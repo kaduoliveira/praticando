@@ -22,7 +22,7 @@ def remover(nomes):
 def alterar(nomes):
     print('Qual o nome você gostária de editar:')
     nome = input()
-    teste = nome in nomes #verificando a existemcia do nome pesquisado na lista
+    teste = nome in nomes #verificando a existemcia do nome pesquisado na lista, retorna True ou False
     if(teste == True):  
         #posicao = nomes.index(nome)
         print(posicao)  #detecting the position on the list
@@ -37,11 +37,25 @@ def buscar(nomes):
     import re
     print('Digite o texto da busca:')
     busca = input()
-    resultado = re.findall('(\w' + busca + '\w+)', nomes)
+    resultado = re.findall('\w'+busca+'\w+', nomes)
     if(resultados != None):
         print('Apesquisa pertence a lista.')
     
-    
+# Expressões regualres:
+#re.match('parametro_a_buscar', "string_fonte_da_busca") - ele retorna um objeto. No caso de não haver MATCH com alguma string ele retona um objeto NoneType
+#   Para recuperar o resultado da busca, definimos a busca como o valor de uma variavel.
+#   Ex: >>>resultado = re.match('Py', 'Python')
+#variavel_escolhida.group() - retorna a string que contem o paramentro da busca anterior.
+#   Ex: >>>resultado.group() >>> 'Py'
+#Usamos colchetes para indicar alguma condição especial da busca, ex:
+#   Ex: resultado = re.match('[Pp]y', 'Python')
+#re.findall - uso para achar todas a ocorrencias da busca. Retorna uma lista com as ocorrências. 
+#   Ex: >>>resultados = re.findall('[A-Za-z]y', 'Python ou jython) >>> resultado.group() >>> ['Py', 'jy']
+# Usar o formato do parametro entre os colchetes para aumentar o leque de busca. 
+#   Ex: >>>resultados = re.findall('[A-Za-z]y[A-Za-z]+', 'Python ou jython) >>> resultado.group() >>> ['Python', 'jython']
+#Pode-se mudar os parametros do colchete por \w que engloba, tambem os numeros
+#   EX: resultados = re.findall('\wy\w+', 'Python ou jython') >>>resultado >>>['Python', 'jython']
+   
 
 def menu():
     nomes = []
